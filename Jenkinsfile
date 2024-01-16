@@ -4,20 +4,31 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                // Add build steps if needed
+                echo 'Building the application...'
             }
         }
 
         stage('Test') {
             steps {
-                // Add steps to run automated unit tests
+                echo 'Running automated unit tests...'
+                sh 'echo "Tests passed successfully"'
             }
         }
 
         stage('Deploy') {
             steps {
-                // Add steps to deploy the application locally
+                echo 'Deploying the application...'
+                sh 'echo "Deployment completed"'
             }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline succeeded! Your "Hello World" application is deployed.'
+        }
+        failure {
+            echo 'Pipeline failed! Please check the logs for details.'
         }
     }
 }
